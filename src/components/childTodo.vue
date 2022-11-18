@@ -1,13 +1,11 @@
 <template>
-  <div>
+  <div class="childTodo">
     <button @click="addChild">増やすchild</button>
-    <draggable v-model="childTodos.todo" item-key="id">
+    <draggable v-model="childTodos" item-key="todo" group="todo">
       <template #item="{index}">
         <div>
-          {{element}}
-          //////
-          <input type="text" v-model="childTodos.todo[index]">
-          /////
+          {{index}}
+          <input type="text" v-model="childTodos[index]">
         </div>
       </template>
     </draggable>
@@ -23,28 +21,19 @@
       draggable
     },
     setup() {
-      let childTodos = ref({ todo: [], key: [] })
-      let drag = ref(false)
+      let childTodos = ref([])
       const addChild = () => {
-        childTodos.value.todo.push('')
-        childTodos.value.key.push(new Date().getTime().toString())
+        childTodos.value.push('')
         console.log(childTodos.value)
       }
       const deleteTodoChild = (index) => {
-        childTodos.value.todo.splice(index, 1)
-        childTodos.value.key.splice(index, 1)
-      }
-      const dragList = (dragId) => {
-        console.log(dragId)
+        childTodos.value.splice(index, 1)
       }
       return {
         childTodos,
-        drag,
         addChild,
         deleteTodoChild,
-        dragList
       }
-      
     }
   }
 </script>
