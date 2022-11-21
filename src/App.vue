@@ -1,13 +1,17 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="(todo, index) in parentTodos" :key="todo.key">
-        <button @click="addParent">増やす</button>
-        <div>
-          <input type="text" v-model="parentTodos[index].text" @input="inputTodo">
-          <button @click="deleteTodo(index)">削除</button>
-          <childTodo :index=index></childTodo>
+  <div class="wrap">
+    <h1>TODOリスト</h1>
+    <p class="explanation">小さいリストはドラッグアンドドロップで移動できます<br>ページを閉じても内容が1時間残ります</p>
+    <ul class="todo-list">
+      <li class="todo-list__item" v-for="(todo, index) in parentTodos" :key="todo.key">
+        <div class="todo-list__head">
+          <input class="todo-list__input parent-input" type="text" v-model="parentTodos[index].text" @input="inputTodo">
+          <div class="todo-list__btn-wrap">
+            <button class="todo-list__btn add-btn" @click="addParent"></button>
+            <button class="todo-list__btn del-btn" @click="deleteTodo(index)"></button>
+          </div>
         </div>
+          <childTodo :index=index></childTodo>
       </li>
     </ul>
   </div>
@@ -15,7 +19,7 @@
 
 <script>
   import { ref, onMounted } from 'vue'
-  import childTodo from './components/childTodo.vue'
+  import childTodo from '@/components/childTodo.vue'
 
   export default {
     components: {
@@ -83,6 +87,3 @@
     }
   }
 </script>
-
-<style scoped>
-</style>

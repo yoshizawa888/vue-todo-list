@@ -1,11 +1,11 @@
 <template>
-  <div class="childTodo">
-    <button @click="addChild()">増やすchild</button>
-    <draggable v-model="childTodos" item-key="todo" group="todo">
+  <div class="child-todo">
+    <button @click="addChild()">リスト追加</button>
+    <draggable class="child-list" v-model="childTodos" item-key="todo" group="todo">
       <template #item="{index}">
-        <div>
-          <input type="text" v-model="childTodos[index]" @input="inputTodo">
-          <button @click="deleteTodoChild(index)">削除</button>
+        <div class="child-list__item">
+          <input class="child-list__input child-input" type="text" v-model="childTodos[index]" @input="inputTodo">
+          <button class="child-list__btn del-btn" @click="deleteTodoChild(index)"></button>
         </div>
       </template>
     </draggable>
@@ -79,3 +79,7 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+@import '@/assets/scss/childTodo.scss';
+</style>

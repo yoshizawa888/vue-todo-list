@@ -1,0 +1,87 @@
+$color-1: #1C222C;
+
+.wrap {
+  padding: 15px;
+}
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+.explanation {
+  margin: 10px 0 20px;
+}
+.todo-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  &__item {
+    width: calc(33.333% - 10px);
+    margin: 0 15px 15px 0;
+    padding: 10px 20px;
+    border: solid 2px $color-1;
+    &:nth-child(3n) {
+      margin: 0 0 15px;
+    }
+  }
+  &__head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__input {
+    width: 100%;
+    max-width: 100%;
+    flex: 1;
+  }
+  &__btn-wrap {
+    margin: 0 0 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  &__btn {
+    margin: 3px 0;
+  }
+}
+.parent-input {
+  font-size: 24px;
+  border-bottom: solid 2px;
+}
+%__btn {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  border: solid 1px $color-1;
+  border-radius: 50%;
+}
+%__btn-cont {
+  content: '';
+  width: 15px;
+  height: 1px;
+  position: absolute;
+  display: inline-block;
+  background: $color-1;
+  top: 50%;
+  left: 50%;
+}
+.add-btn {
+  @extend %__btn;
+  &:before {
+    @extend %__btn-cont;
+    transform: translateY(-50%) translateX(-50%);
+  }
+  &:after {
+    @extend %__btn-cont;
+    transform: translateY(-50%) translateX(-50%) rotate(90deg);
+  }
+}
+.del-btn {
+  @extend %__btn;
+  &:before {
+    @extend %__btn-cont;
+    transform: translateY(-50%) translateX(-50%);
+  }
+}
