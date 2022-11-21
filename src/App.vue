@@ -5,7 +5,7 @@
     <ul class="todo-list">
       <li class="todo-list__item" v-for="(todo, index) in parentTodos" :key="todo.key">
         <div class="todo-list__head">
-          <input class="todo-list__input parent-input" type="text" v-model="parentTodos[index].text" @input="inputTodo">
+          <input class="todo-list__input parent-input" type="text" v-model="parentTodos[index].text" @input="todoSave">
           <div class="todo-list__btn-wrap">
             <button class="todo-list__btn add-btn" @click="addParent"></button>
             <button class="todo-list__btn del-btn" @click="deleteTodo(index)"></button>
@@ -48,7 +48,7 @@
         }
       }
       cookieTodo()
-      
+
       onMounted(() => {
         if(!cookieFlg.value) {
           addParent()
@@ -59,18 +59,18 @@
         parentTodos.value[parentCount.value].text.push('')
         parentTodos.value[parentCount.value].key.push(new Date().getTime().toString())
         parentCount.value++
-        document.cookie = 'todo =' + JSON.stringify(parentTodos.value) + '; max-age=3600;'
+        todoSave()
       }
       const deleteTodo = (index) => {
         if(parentCount.value > 0) {
           parentTodos.value.splice(index, 1)
           
           parentCount.value--
-          document.cookie = 'todo =' + JSON.stringify(parentTodos.value) + '; max-age=3600;'
+          todoSave()
           document.cookie = 'todoChild' + parentCount.value + '=; max-age=0;'
         }
       }
-      const inputTodo = () => {
+      const todoSave = () => {
         document.cookie = 'todo =' + JSON.stringify(parentTodos.value) + '; max-age=3600;'
       }
       return {
@@ -82,7 +82,7 @@
         addParent,
         deleteTodo,
         cookieTodo,
-        inputTodo, 
+        todoSave, 
       }
     }
   }
