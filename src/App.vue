@@ -11,7 +11,7 @@
             <button class="todo-list__btn del-btn" @click="deleteTodo(index)"></button>
           </div>
         </div>
-          <childTodo :index=index></childTodo>
+        <childTodo :index=index></childTodo>
       </li>
     </ul>
   </div>
@@ -48,7 +48,7 @@
         }
       }
       cookieTodo()
-
+      
       onMounted(() => {
         if(!cookieFlg.value) {
           addParent()
