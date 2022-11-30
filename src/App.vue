@@ -29,7 +29,7 @@
       const parentTodos = ref([])
       const parentCount = ref(0)
 
-      const cookies = ref(ref(document.cookie))
+      const cookies = ref(document.cookie)
       const cookiesArray = ref(cookies.value.split(';'))
       const cookieFlg = ref(false)
 
