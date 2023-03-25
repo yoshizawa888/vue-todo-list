@@ -1,6 +1,6 @@
 <template>
   <div class="child-todo">
-    <button @click="addChild()">リスト追加</button>
+    <button class="child-add-btn" @click="addChild()">リスト追加</button>
     <draggable class="child-list" v-model="childTodos" item-key="todo" group="todo">
       <template #item="{index}">
         <div class="child-list__item">
