@@ -39,9 +39,9 @@ export default {
 				if (cookieName == 'todo=') {
 					let json = cookie.trim().slice(5);
 					parentTodos.value = JSON.parse(json);
-          if(json !== '[]') {
-            cookieFlg.value = true;
-          }
+					if (json !== '[]') {
+						cookieFlg.value = true;
+					}
 					break;
 				}
 			}
@@ -69,7 +69,7 @@ export default {
 		const todoSave = () => {
 			document.cookie = 'todo =' + JSON.stringify(parentTodos.value) + '; max-age=3600;';
 		};
-    onMounted(() => {
+		onMounted(() => {
 			if (!cookieFlg.value) {
 				addParent();
 			}
