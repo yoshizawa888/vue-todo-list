@@ -1,7 +1,7 @@
 <template>
 	<div class="wrap">
 		<h1>TODOリスト</h1>
-		<p class="explanation">小さいリストはドラッグアンドドロップで移動できます<br />ページを閉じても内容が1時間残ります</p>
+		<p class="explanation">小さいリストはドラックアンドドロップで移動できます<br />ページを閉じても内容が1時間残ります</p>
 		<ul class="todo-list">
 			<li class="todo-list__item" v-for="(todo, index) in parentTodos" :key="todo.key">
 				<div class="todo-list__head">
